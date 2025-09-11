@@ -1,0 +1,35 @@
+@import url("./reset.css");
+@import url("./theme.css");
+
+@font-face {
+    font-display: swap;
+    font-family: 'Geist';
+    font-weight: 100 900;
+    src: url(/fonts/Geist.ttf);
+}
+
+body {
+    color: var(--color-black-400);
+    background-color: var(--color-cream-400);
+    transition:
+        color 0.5s,
+        background-color 0.5s;
+    font-family: Geist, serif;
+    line-height: 1.5;
+    text-wrap: pretty;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.heading {
+    color: var(--color-black-600);
+    font-weight: 700;
+    letter-spacing: var(--letter-spacing-xs);
+    line-height: 1;
+}
+
+.content {
+    max-width: 1420px;
+    margin-inline: auto;
+}
