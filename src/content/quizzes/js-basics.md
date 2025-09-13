@@ -1,7 +1,7 @@
 ---
 title: 'JavaScript Basics'
 description: 'Test your knowledge of fundamental JavaScript concepts'
-difficulty: 'beginner'
+difficulty: 'advanced'
 category: 'Programming'
 timeLimit: 600
 questions:

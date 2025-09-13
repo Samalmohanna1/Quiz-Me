@@ -1,0 +1,89 @@
+---
+import { getCollection } from 'astro:content'
+
+const quizzes = await getCollection('quizzes')
+---
+
+<div class='quiz-grid'>
+	{
+		quizzes.map((quiz) => (
+			<div class='quiz-card'>
+				<h2>
+					<a href={`/quiz/${quiz.slug}`}>{quiz.data.title}</a>
+				</h2>
+				<p>{quiz.data.description}</p>
+				<div class='quiz-meta'>
+					<span class={`difficulty-` + quiz.data.difficulty}>
+						{quiz.data.difficulty}
+					</span>
+					<span class='category'>{quiz.data.category}</span>
+					<span class='question-count'>
+						{quiz.data.questions.length} questions
+					</span>
+					{quiz.data.timeLimit && (
+						<span class='time-limit'>
+							{Math.floor(quiz.data.timeLimit / 60)} min
+						</span>
+					)}
+				</div>
+			</div>
+		))
+	}
+</div>
+
+<style>
+	.quiz-grid {
+		display: grid;
+		grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+		gap: var(--spacing-m);
+		padding-block: var(--spacing-3xl);
+	}
+
+	.quiz-card {
+		background: var(--color-cream-100);
+		padding: var(--spacing-m);
+		border: 1px solid var(--color-cream-300);
+		transition:
+			transform 0.2s,
+			box-shadow 0.2s;
+	}
+
+	.quiz-card:hover {
+		transform: translateY(-2px);
+		box-shadow: 0 2px 18px rgba(0, 0, 0, 0.03);
+	}
+
+	.quiz-card h2 {
+		margin-bottom: var(--spacing-3xs);
+	}
+
+	.quiz-card h2 a {
+		text-decoration: none;
+		color: var(--color-black-500);
+	}
+
+	.quiz-meta {
+		display: flex;
+		flex-wrap: wrap;
+		gap: var(--spacing-3xs);
+		margin-top: var(--spacing-s);
+	}
+
+	.quiz-meta span {
+		padding-inline: var(--spacing-2xs);
+		font-size: var(--text-step--2);
+		line-height: 1.5;
+		color: var(--color-black-400);
+		background: var(--color-yellow-200);
+	}
+
+	.quiz-meta .difficulty-easy {
+		background: var(--color-yellow-200);
+	}
+	.quiz-meta .difficulty-challenging {
+		background: var(--color-orange-200);
+	}
+	.quiz-meta .difficulty-advanced {
+		background: var(--color-blue-200);
+	}
+</style>

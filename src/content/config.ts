@@ -5,7 +5,7 @@ const quizCollection = defineCollection({
     schema: z.object({
         title: z.string(),
         description: z.string(),
-        difficulty: z.enum(['beginner', 'intermediate', 'advanced']),
+        difficulty: z.enum(['easy', 'challenging', 'advanced']),
         category: z.string(),
         timeLimit: z.number().optional(),
         questions: z.array(z.object({
