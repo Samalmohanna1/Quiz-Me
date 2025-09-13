@@ -6,34 +6,34 @@ const currentYear = new Date().getFullYear()
 <footer>
 	<div class='content'>
 		<p class='large-header'>{baseData.name}</p>
-		<div class='footer-content'>
-			<nav>
-				<a
-					href={baseData.miniGamesURL}
-					target='_blank'
-					rel='noopener noreferrer'
-					aria-label={baseData.miniGamesAriaLabel}
-					class='footer-link'
-					>Play free games
-				</a>
-				<a
-					href={baseData.portfolioURL}
-					target='_blank'
-					rel='noopener noreferrer'
-					aria-label={baseData.portfoliAriaLabel}
-					class='footer-link'>Made with &#128151; by Sam Almohanna</a
-				>
-			</nav>
+		<nav class='footer-content'>
+			<a
+				href={baseData.miniGamesURL}
+				target='_blank'
+				rel='noopener noreferrer'
+				aria-label={baseData.miniGamesAriaLabel}
+				class='footer-link'
+				>MYOL minigames <span class='arrow'>&#8599;</span>
+			</a>
+			<a
+				href={baseData.portfolioURL}
+				target='_blank'
+				rel='noopener noreferrer'
+				aria-label={baseData.portfoliAriaLabel}
+				class='footer-link'
+				>Made with &#128151; by Sam Almohanna <span class='arrow'
+					>&#8599;</span
+				></a
+			>
 			<p class='copyright'>
 				Copyright &copy; {currentYear} - All rights reserved
 			</p>
-		</div>
+		</nav>
 	</div>
 </footer>
 
 <style>
 	footer {
-		padding: var(--spacing-s);
 		display: flex;
 		flex-direction: column;
 		background-color: var(--color-yellow-600);
@@ -45,14 +45,15 @@ const currentYear = new Date().getFullYear()
 	.content {
 		display: flex;
 		flex-direction: column;
-		gap: var(--spacing-3xl);
+		gap: var(--spacing-l);
+		padding-block: var(--spacing-s);
 	}
 	.large-header {
 		font-size: clamp(32px, 18cqw, 305px);
 		font-family: ClimateCrisis, sans-serif;
 		text-decoration: underline;
 		text-align: center;
-		line-height: 110%;
+		line-height: 100%;
 		letter-spacing: var(--letter-spacing-xs);
 		color: var(--color-black-500);
 	}
@@ -65,18 +66,19 @@ const currentYear = new Date().getFullYear()
 	}
 	.footer-link {
 		font-size: var(--text-step--1);
-		font-weight: 500;
 		text-decoration: none;
 		color: var(--color-black-500);
-		padding: var(--spacing-2xs);
+		padding-block: var(--spacing-2xs);
 	}
 	.footer-link:hover {
-		text-decoration: wavy underline;
+		text-decoration: underline;
 		text-underline-position: under;
 	}
-
+	.arrow {
+		font-size: var(--text-step-0);
+	}
 	.copyright {
-		font-size: var(--text-step--2);
+		font-size: var(--text-step--1);
 		color: var(--color-black-500);
 		padding-block: var(--spacing-2xs);
 	}
@@ -86,9 +88,16 @@ const currentYear = new Date().getFullYear()
 			flex-direction: row;
 			gap: var(--spacing-s);
 		}
+		.content {
+			gap: var(--spacing-3xl);
+		}
 		.footer-content {
 			flex-direction: row;
 			gap: 0;
+		}
+		.footer-link,
+		.copyright {
+			font-size: var(--text-step--2);
 		}
 	}
 </style>
