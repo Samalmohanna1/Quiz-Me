@@ -1,0 +1,82 @@
+---
+import { getCollection, getEntry } from 'astro:content'
+import BaseLayout from '../../layouts/BaseLayout.astro'
+
+export async function getStaticPaths() {
+	const quizzes = await getCollection('quizzes')
+	return quizzes.map((quiz) => ({
+		params: { slug: quiz.slug },
+	}))
+}
+
+const { slug } = Astro.params
+const quiz = await getEntry('quizzes', slug)
+
+if (!quiz) {
+	return Astro.redirect('/404')
+}
+
+const { Content } = await quiz.render()
+---
+
+<BaseLayout title={quiz.data.title}>
+	<div class='quiz-description'>
+		<div class='quiz-header'>
+			<div class='quiz-info'>
+				<span class={`difficulty-` + quiz.data.difficulty}>
+					{quiz.data.difficulty}
+				</span>
+				<span class='category'>{quiz.data.category}</span>
+				<span class='question-count'>
+					{quiz.data.questions.length} questions
+				</span>
+				{
+					quiz.data.timeLimit && (
+						<span class='time-limit'>
+							Time limit: {Math.floor(quiz.data.timeLimit / 60)}{' '}
+							minutes
+						</span>
+					)
+				}
+			</div>
+		</div>
+		<Content />
+	</div>
+</BaseLayout>
+
+<style>
+	.quiz-header {
+		margin-bottom: var(--spacing-2xs);
+	}
+
+	.quiz-info {
+		display: flex;
+		flex-wrap: wrap;
+		gap: var(--spacing-3xs);
+	}
+
+	.quiz-info span {
+		padding-inline: var(--spacing-2xs);
+		font-size: var(--text-step--2);
+		line-height: 1.5;
+		color: var(--color-black-400);
+		background: var(--color-yellow-200);
+	}
+
+	.quiz-info .difficulty-easy {
+		background: var(--color-yellow-200);
+	}
+	.quiz-info .difficulty-challenging {
+		background: var(--color-orange-200);
+	}
+	.quiz-info .difficulty-advanced {
+		background: var(--color-blue-200);
+	}
+
+	.quiz-description {
+		background: var(--color-cream-50);
+		padding: var(--spacing-m);
+		margin-block: var(--spacing-l);
+		border-left: 8px solid var(--color-black-500);
+	}
+</style>
