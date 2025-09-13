@@ -3,9 +3,16 @@
 
 @font-face {
     font-display: swap;
-    font-family: 'Geist';
+    font-family: 'ClimateCrisis';
+    font-weight: 400;
+    src: url(/fonts/ClimateCrisis.ttf);
+}
+
+@font-face {
+    font-display: swap;
+    font-family: 'OpenSans';
     font-weight: 100 900;
-    src: url(/fonts/Geist.ttf);
+    src: url(/fonts/OpenSans.ttf);
 }
 
 body {
@@ -14,7 +21,7 @@ body {
     transition:
         color 0.5s,
         background-color 0.5s;
-    font-family: Geist, serif;
+    font-family: OpenSans, sans-serif;
     line-height: 1.5;
     text-wrap: pretty;
     text-rendering: optimizeLegibility;
@@ -30,6 +37,7 @@ body {
 }
 
 .content {
-    max-width: 1420px;
+    max-width: 1620px;
+    width: 100%;
     margin-inline: auto;
 }

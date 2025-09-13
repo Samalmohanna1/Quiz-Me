@@ -88,16 +88,4 @@
     --spacing-xl: clamp(3.375rem, 3.0981rem + 1.3846vw, 4.5rem);
     --spacing-2xl: clamp(4.5rem, 4.1308rem + 1.8462vw, 6rem);
     --spacing-3xl: clamp(6.75rem, 6.1962rem + 2.7692vw, 9rem);
-
-    --spacing-3xs-2xs: clamp(0.3125rem, 0.2048rem + 0.5385vw, 0.75rem);
-    --spacing-2xs-xs: clamp(0.5625rem, 0.424rem + 0.6923vw, 1.125rem);
-    --spacing-xs-s: clamp(0.875rem, 0.7212rem + 0.7692vw, 1.5rem);
-    --spacing-s-m: clamp(1.125rem, 0.8481rem + 1.3846vw, 2.25rem);
-    --spacing-m-l: clamp(1.6875rem, 1.3644rem + 1.6154vw, 3rem);
-    --spacing-l-xl: clamp(2.25rem, 1.6962rem + 2.7692vw, 4.5rem);
-    --spacing-xl-2xl: clamp(3.375rem, 2.7288rem + 3.2308vw, 6rem);
-    --spacing-2xl-3xl: clamp(4.5rem, 3.3923rem + 5.5385vw, 9rem);
-
-    --spacing-s-l: clamp(1.125rem, 0.6635rem + 2.3077vw, 3rem);
-
 }

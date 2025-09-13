@@ -1,0 +1,94 @@
+---
+import baseData from '../data/baseData.js'
+const currentYear = new Date().getFullYear()
+---
+
+<footer>
+	<div class='content'>
+		<p class='large-header'>{baseData.name}</p>
+		<div class='footer-content'>
+			<nav>
+				<a
+					href={baseData.miniGamesURL}
+					target='_blank'
+					rel='noopener noreferrer'
+					aria-label={baseData.miniGamesAriaLabel}
+					class='footer-link'
+					>Play free games
+				</a>
+				<a
+					href={baseData.portfolioURL}
+					target='_blank'
+					rel='noopener noreferrer'
+					aria-label={baseData.portfoliAriaLabel}
+					class='footer-link'>Made with &#128151; by Sam Almohanna</a
+				>
+			</nav>
+			<p class='copyright'>
+				Copyright &copy; {currentYear} - All rights reserved
+			</p>
+		</div>
+	</div>
+</footer>
+
+<style>
+	footer {
+		padding: var(--spacing-s);
+		display: flex;
+		flex-direction: column;
+		background-color: var(--color-yellow-600);
+	}
+	nav {
+		display: flex;
+		flex-direction: column;
+	}
+	.content {
+		display: flex;
+		flex-direction: column;
+		gap: var(--spacing-3xl);
+	}
+	.large-header {
+		font-size: clamp(32px, 18cqw, 305px);
+		font-family: ClimateCrisis, sans-serif;
+		text-decoration: underline;
+		text-align: center;
+		line-height: 110%;
+		letter-spacing: var(--letter-spacing-xs);
+		color: var(--color-black-500);
+	}
+
+	.footer-content {
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+		padding-inline: var(--spacing-xs);
+	}
+	.footer-link {
+		font-size: var(--text-step--1);
+		font-weight: 500;
+		text-decoration: none;
+		color: var(--color-black-500);
+		padding: var(--spacing-2xs);
+	}
+	.footer-link:hover {
+		text-decoration: wavy underline;
+		text-underline-position: under;
+	}
+
+	.copyright {
+		font-size: var(--text-step--2);
+		color: var(--color-black-500);
+		padding-block: var(--spacing-2xs);
+	}
+
+	@media (min-width: 768px) {
+		nav {
+			flex-direction: row;
+			gap: var(--spacing-s);
+		}
+		.footer-content {
+			flex-direction: row;
+			gap: 0;
+		}
+	}
+</style>
