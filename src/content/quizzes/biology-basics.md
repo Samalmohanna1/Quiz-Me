@@ -3,7 +3,6 @@ title: 'Biology Basics'
 description: 'Test your knowledge of essential biology concepts'
 difficulty: 'challenging'
 category: 'Science'
-timeLimit: 600
 questions:
     - question: 'What is the basic unit of life?'
       options:

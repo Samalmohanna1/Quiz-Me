@@ -1,6 +1,7 @@
 ---
 import { getCollection, getEntry } from 'astro:content'
 import BaseLayout from '../../layouts/BaseLayout.astro'
+import Quiz from '../../components/Quiz'
 
 export async function getStaticPaths() {
 	const quizzes = await getCollection('quizzes')
@@ -30,17 +31,17 @@ const { Content } = await quiz.render()
 				<span class='question-count'>
 					{quiz.data.questions.length} questions
 				</span>
-				{
-					quiz.data.timeLimit && (
-						<span class='time-limit'>
-							Time limit: {Math.floor(quiz.data.timeLimit / 60)}{' '}
-							minutes
-						</span>
-					)
-				}
 			</div>
 		</div>
 		<Content />
+	</div>
+	<div class='quiz-container'>
+		<Quiz quiz={quiz.data} client:load />
+	</div>
+	<div class='center-text'>
+		<a href='/' aria-label='back to quiz list.' class='back-btn'
+			>Find Another Quiz</a
+		>
 	</div>
 </BaseLayout>
 
@@ -78,5 +79,14 @@ const { Content } = await quiz.render()
 		padding: var(--spacing-m);
 		margin-block: var(--spacing-l);
 		border-left: 8px solid var(--color-black-500);
+	}
+	.back-btn {
+		display: inline-block;
+		padding-inline: var(--spacing-s);
+		padding-block: var(--spacing-2xs);
+		background-color: var(--color-black-500);
+		color: var(--color-yellow-400);
+		font-weight: 600;
+		text-underline-position: under;
 	}
 </style>

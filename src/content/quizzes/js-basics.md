@@ -3,7 +3,6 @@ title: 'JavaScript Basics'
 description: 'Test your knowledge of fundamental JavaScript concepts'
 difficulty: 'advanced'
 category: 'Programming'
-timeLimit: 600
 questions:
     - question: 'What is the correct way to declare a variable in JavaScript?'
       options:

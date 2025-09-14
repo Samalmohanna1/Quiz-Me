@@ -3,7 +3,6 @@ title: 'Math Fundamentals'
 description: 'Check your understanding of basic math concepts'
 difficulty: 'easy'
 category: 'Mathematics'
-timeLimit: 600
 questions:
     - question: 'What is 12 × 8?'
       options:

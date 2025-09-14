@@ -7,7 +7,6 @@ const quizCollection = defineCollection({
         description: z.string(),
         difficulty: z.enum(['easy', 'challenging', 'advanced']),
         category: z.string(),
-        timeLimit: z.number().optional(),
         questions: z.array(z.object({
             question: z.string(),
             options: z.array(z.string()),

@@ -3,7 +3,6 @@ title: 'Pop Culture Trivia'
 description: 'A fun quiz to test your knowledge of recent pop culture'
 difficulty: 'easy'
 category: 'Entertainment'
-timeLimit: 600
 questions:
     - question: 'Who played Iron Man in the Marvel Cinematic Universe?'
       options:
