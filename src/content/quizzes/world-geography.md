@@ -3,7 +3,6 @@ title: 'World Geography'
 description: 'Test your knowledge of countries, capitals, and landmarks'
 difficulty: 'challenging'
 category: 'Geography'
-timeLimit: 600
 questions:
     - question: 'What is the capital of Japan?'
       options:

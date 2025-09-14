@@ -8,24 +8,19 @@ const quizzes = await getCollection('quizzes')
 	{
 		quizzes.map((quiz) => (
 			<div class='quiz-card'>
-				<h2>
-					<a href={`/quiz/${quiz.slug}`}>{quiz.data.title}</a>
-				</h2>
-				<p>{quiz.data.description}</p>
-				<div class='quiz-meta'>
-					<span class={`difficulty-` + quiz.data.difficulty}>
-						{quiz.data.difficulty}
-					</span>
-					<span class='category'>{quiz.data.category}</span>
-					<span class='question-count'>
-						{quiz.data.questions.length} questions
-					</span>
-					{quiz.data.timeLimit && (
-						<span class='time-limit'>
-							{Math.floor(quiz.data.timeLimit / 60)} min
+				<a href={`/quiz/${quiz.slug}`}>
+					<h2>{quiz.data.title}</h2>
+					<p>{quiz.data.description}</p>
+					<div class='quiz-meta'>
+						<span class={`difficulty-` + quiz.data.difficulty}>
+							{quiz.data.difficulty}
 						</span>
-					)}
-				</div>
+						<span class='category'>{quiz.data.category}</span>
+						<span class='question-count'>
+							{quiz.data.questions.length} questions
+						</span>
+					</div>
+				</a>
 			</div>
 		))
 	}
@@ -37,6 +32,12 @@ const quizzes = await getCollection('quizzes')
 		grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
 		gap: var(--spacing-m);
 		padding-block: var(--spacing-3xl);
+		padding-inline: var(--spacing-s);
+	}
+
+	a {
+		text-decoration: none;
+		color: inherit;
 	}
 
 	.quiz-card {
@@ -54,12 +55,8 @@ const quizzes = await getCollection('quizzes')
 	}
 
 	.quiz-card h2 {
-		margin-bottom: var(--spacing-3xs);
-	}
-
-	.quiz-card h2 a {
-		text-decoration: none;
-		color: var(--color-black-500);
+		margin-bottom: var(--spacing-2xs);
+		line-height: 1;
 	}
 
 	.quiz-meta {
