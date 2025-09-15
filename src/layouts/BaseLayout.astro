@@ -21,6 +21,7 @@ const { title, description, image } = Astro.props
 		<ClientRouter />
 	</head>
 	<body>
+		<div class='texture'></div>
 		<!-- <Navbar /> -->
 		<main class='content'>
 			<slot />
@@ -30,6 +31,18 @@ const { title, description, image } = Astro.props
 </html>
 
 <style>
+	body {
+		position: relative;
+	}
+	.texture {
+		position: fixed;
+		inset: 0;
+		background-image: url('/assets/paper-texture.png');
+		background-repeat: repeat;
+		opacity: 40%;
+		height: 100dvh;
+		pointer-events: none;
+	}
 	.content {
 		padding-block: var(--spacing-3xl);
 	}
