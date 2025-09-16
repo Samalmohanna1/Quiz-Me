@@ -1,0 +1,42 @@
+---
+import { Image } from 'astro:assets'
+
+interface Props {
+	name: string
+	scale?: number
+}
+
+const { name, scale = 1 } = Astro.props as Props
+const width = 100 * scale
+const height = 100 * scale
+
+const icons = import.meta.glob('../assets/icons/*.webp', {
+	eager: true,
+	import: 'default',
+}) as Record<string, ImageMetadata>
+
+const iconMap = Object.entries(icons).reduce(
+	(acc, [path, icon]) => {
+		const iconName = path.split('/').pop()?.replace('.webp', '') || ''
+		acc[iconName] = icon
+		return acc
+	},
+	{} as Record<string, ImageMetadata>
+)
+
+const iconSrc = iconMap[name]
+
+if (!iconSrc) {
+	throw new Error(
+		`Icon "${name}" not found. Available icons: ${Object.keys(iconMap).join(', ')}`
+	)
+}
+---
+
+<Image
+	src={iconSrc}
+	width={width}
+	height={height}
+	alt={`${name} icon`}
+	loading='lazy'
+/>
