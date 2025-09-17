@@ -1,11 +1,12 @@
 ---
+import Hero from '../components/Hero.astro'
 import Icon from '../components/Icon.astro'
 import QuizList from '../components/QuizList.astro'
 import BaseLayout from '../layouts/BaseLayout.astro'
 ---
 
 <BaseLayout title=''>
-	<h1 class='heading'>Quiz Me</h1>
+	<Hero />
 	<Icon name='smiley' scale={0.8} />
 	<QuizList />
 </BaseLayout>

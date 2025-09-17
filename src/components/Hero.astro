@@ -1,0 +1,45 @@
+---
+import { Image } from 'astro:assets'
+import mathCover from '../assets/quiz-media/cover-imgs/math-cover.webp'
+---
+
+<section>
+	<div class='content hero-copy'>
+		<h1>Quizzes So Fun, You&apos;ll Forget You&apos;re Procrastinating.</h1>
+		<p>Nerd out, show off, but don&apos;t blame us for missed deadlines.</p>
+	</div>
+	<div class='img'>
+		<Image src={mathCover} alt='cover' />
+	</div>
+</section>
+
+<style>
+	section {
+		display: grid;
+		grid-template-columns: 1fr;
+		grid-template-areas: 'copy' 'img';
+	}
+	.hero-copy {
+		background-color: var(--color-blue-300);
+		color: var(--color-black-500);
+		padding: var(--spacing-xl) var(--spacing-s);
+		grid-area: copy;
+		display: grid;
+		gap: var(--spacing-s);
+	}
+	.img {
+		background-color: pink;
+		grid-area: img;
+	}
+	h1 {
+		font-size: var(--text-step-4);
+		line-height: 1.1;
+	}
+
+	@media (min-width: 768px) {
+		section {
+			grid-template-columns: 1fr 1fr;
+			grid-template-areas: 'copy img';
+		}
+	}
+</style>
