@@ -1,0 +1,31 @@
+---
+interface Props {
+	direction: string
+	color?: string
+}
+
+const { direction = 'column', color = `var(--color-cream-400)` } =
+	Astro.props as Props
+---
+
+<div
+	class='flex'
+	style={`flex-direction: ${direction}; background-color: ${color};`}
+>
+	<div class='thin'></div>
+	<div class='thick'></div>
+</div>
+
+<style>
+	.flex {
+		display: flex;
+		gap: var(--spacing-3xs);
+	}
+
+	.thin {
+		border-top: 3px solid var(--color-black-500);
+	}
+	.thick {
+		border-top: 6px solid var(--color-black-500);
+	}
+</style>
