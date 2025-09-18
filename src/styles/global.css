@@ -45,3 +45,7 @@ body {
 .center-text {
     text-align: center;
 }
+
+.basic-border {
+    border: 6px solid var(--color-black-500);
+}

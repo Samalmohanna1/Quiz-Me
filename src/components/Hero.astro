@@ -1,0 +1,94 @@
+---
+import { Image } from 'astro:assets'
+import mathCover from '../assets/quiz-media/cover-imgs/placeholder-img.webp'
+import Icon from './Icon.astro'
+---
+
+<section>
+	<div class='content content-flex'>
+		<div class='basic-border hero-copy'>
+			<div class='icons-flex'>
+				<Icon name='eye' scale={0.8} />
+				<Icon name='flower-1' scale={1.4} />
+			</div>
+			<h1>
+				Quizzes So Fun, You&apos;ll Forget You&apos;re Procrastinating
+			</h1>
+			<p>
+				Nerd out, show off, but don&apos;t blame us for missed
+				deadlines.
+			</p>
+
+			<div class='icons-flex tight'>
+				<Icon name='flower-6' scale={1.2} />
+				<Icon name='smiley' scale={0.8} />
+			</div>
+		</div>
+		<div class='img'>
+			<Image
+				class='basic-border'
+				src={mathCover}
+				alt='cover'
+				width={700}
+			/>
+		</div>
+	</div>
+</section>
+
+<style>
+	section {
+		background-color: var(--color-cream-600);
+		padding-block: var(--spacing-xl);
+	}
+	.content-flex {
+		display: flex;
+		flex-direction: column;
+		gap: var(--spacing-2xs);
+	}
+
+	.hero-copy {
+		background-color: var(--color-blue-300);
+		color: var(--color-black-500);
+		padding: var(--spacing-m) var(--spacing-s);
+		align-content: center;
+	}
+	.img {
+		margin-inline: auto;
+	}
+	img {
+		height: fit-content;
+	}
+	.icons-flex {
+		display: flex;
+		flex-direction: row;
+		justify-content: space-between;
+		align-items: end;
+		mix-blend-mode: overlay;
+	}
+
+	.tight {
+		max-width: 80%;
+		margin-inline: auto;
+	}
+	h1 {
+		font-size: var(--text-step-4);
+		font-weight: 900;
+		line-height: 1.1;
+		text-transform: uppercase;
+		max-width: 30ch;
+	}
+	p {
+		font-size: var(--text-step-0);
+		padding-top: var(--spacing-s);
+	}
+
+	@media (min-width: 1000px) {
+		.content-flex {
+			flex-direction: row;
+			padding-inline: var(--spacing-s);
+		}
+		.tight {
+			max-width: 50%;
+		}
+	}
+</style>

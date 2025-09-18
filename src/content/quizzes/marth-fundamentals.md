@@ -1,4 +1,5 @@
 ---
+cover: 'math-cover.webp'
 title: 'Math Fundamentals'
 description: 'Check your understanding of basic math concepts'
 difficulty: 'easy'
