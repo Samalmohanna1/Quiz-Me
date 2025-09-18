@@ -3,6 +3,7 @@ import Hero from '../components/Hero.astro'
 import QuizList from '../components/QuizList.astro'
 import BaseLayout from '../layouts/BaseLayout.astro'
 import Separator from '../components/Separator.astro'
+import Testimonial from '../components/Testimonial.astro'
 ---
 
 <BaseLayout title=''>
@@ -10,6 +11,8 @@ import Separator from '../components/Separator.astro'
 	<Hero />
 	<Separator direction='column-reverse' />
 	<QuizList />
+	<Separator direction='column-reverse' color='pink' />
+	<Testimonial />
 	<Separator direction='column-reverse' color='var(--color-yellow-600)' />
 </BaseLayout>
 
