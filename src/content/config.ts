@@ -18,6 +18,15 @@ const quizCollection = defineCollection({
     })
 });
 
+const testimonialCollection = defineCollection({
+    type: 'content',
+    schema: z.object({
+        testimonial: z.string(),
+        name: z.string()
+    })
+});
+
 export const collections = {
-    quizzes: quizCollection
+    quizzes: quizCollection,
+    testimonials: testimonialCollection,
 };

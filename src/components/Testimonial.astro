@@ -1,0 +1,64 @@
+---
+import { getCollection } from 'astro:content'
+
+const testimonials = await getCollection('testimonials')
+---
+
+<section>
+	<div class='flex content'>
+		{
+			testimonials.map((t) => (
+				<div class='wrapper'>
+					<div class='paper'>
+						<p class='testimonial'>{t.data.testimonial}</p>
+						<p class='name'>{t.data.name}</p>
+					</div>
+				</div>
+			))
+		}
+	</div>
+</section>
+
+<style>
+	section {
+		background-color: pink;
+	}
+	.flex {
+		display: flex;
+		flex-direction: column;
+		gap: var(--spacing-s);
+		justify-content: space-evenly;
+		align-items: center;
+	}
+	.wrapper {
+		padding: var(--spacing-m) var(--spacing-s);
+	}
+	.paper {
+		max-width: 450px;
+		background-image: url('../assets/ripped-paper.webp');
+		background-position: center;
+		background-size: cover;
+		background-repeat: no-repeat;
+		padding: var(--spacing-xl) var(--spacing-s);
+	}
+	.testimonial {
+		font-size: var(--text-step--1);
+		line-height: 1.5;
+	}
+	.name {
+		padding-top: var(--spacing-xs);
+		font-weight: 800;
+		text-align: right;
+		text-transform: uppercase;
+	}
+
+	@media (min-width: 1000px) {
+		.flex {
+			flex-direction: row;
+		}
+
+		.wrapper {
+			padding: var(--spacing-xl) var(--spacing-s);
+		}
+	}
+</style>
