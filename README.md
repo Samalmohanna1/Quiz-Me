@@ -1,43 +1,22 @@
-# Astro Starter Kit: Minimal
+# Quiz Me | A casual quiz site
 
-```sh
-npm create astro@latest -- --template minimal
-```
+<!-- ![Portfolio banner](https://cdn.sanity.io/images/igp59sug/production/4a978ea42b3cfcf24d5136b72af0b082a8d931ca-1200x675.png) -->
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+A fun, interactive website packed with quizzes on all sorts of topics.  
+Take a quiz, challenge your friends, and maybe even learn something (but, you know, absolutely no promises).
 
-## 🚀 Project Structure
+## Features
 
-Inside of your Astro project, you'll see the following folders and files:
+-   Loads of quirky and challenging quizzes
+-   Topics ranging from science to pop culture and beyond
+-   Results you can share, mock, or brag about
 
-```text
-/
-├── public/
-├── src/
-│   └── pages/
-│       └── index.astro
-└── package.json
-```
+## How to Use
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
+1. Pick a quiz
+2. Answer some questions
+3. See how you did (or didn’t)
 
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
+---
 
-Any static assets, like images, can be placed in the `public/` directory.
-
-## 🧞 Commands
-
-All commands are run from the root of the project, from a terminal:
-
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
-
-## 👀 Want to learn more?
-
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+Ready to get quizzical? Dive in and see where the questions take you!
