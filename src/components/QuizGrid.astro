@@ -1,17 +1,20 @@
 ---
 import { getCollection } from 'astro:content'
+import Icon from './Icon.astro'
 
 const quizzes = await getCollection('quizzes')
 ---
 
-<div class='quiz-grid'>
+<div class='content quiz-grid'>
 	{
 		quizzes.map((quiz) => (
-			<div class='quiz-card'>
-				<a href={`/quiz/${quiz.slug}`}>
-					<h2>{quiz.data.title}</h2>
-					<p>{quiz.data.description}</p>
-					<div class='quiz-meta'>
+			<a class='quiz-card' href={`/quiz/${quiz.slug}`}>
+				<div
+					class='cover'
+					style={`background-image: url('${quiz.data.cover}'); background-size: cover;`}
+				>
+					<Icon name='heart-1' />
+					{/* <div class='quiz-meta'>
 						<span class={`difficulty-` + quiz.data.difficulty}>
 							{quiz.data.difficulty}
 						</span>
@@ -19,9 +22,11 @@ const quizzes = await getCollection('quizzes')
 						<span class='question-count'>
 							{quiz.data.questions.length} questions
 						</span>
-					</div>
-				</a>
-			</div>
+					</div> */}
+				</div>
+				<h3>{quiz.data.title}</h3>
+				<p>{quiz.data.description}</p>
+			</a>
 		))
 	}
 </div>
@@ -33,30 +38,30 @@ const quizzes = await getCollection('quizzes')
 		gap: var(--spacing-m);
 		padding-block: var(--spacing-3xl);
 		padding-inline: var(--spacing-s);
+		margin-block: var(--spacing-3xl);
+		background-color: var(--color-cream-200);
 	}
 
 	a {
 		text-decoration: none;
 		color: inherit;
-	}
-
-	.quiz-card {
-		background: var(--color-cream-100);
-		padding: var(--spacing-m);
-		border: 1px solid var(--color-cream-300);
 		transition:
 			transform 0.2s,
 			box-shadow 0.2s;
 	}
-
-	.quiz-card:hover {
-		transform: translateY(-2px);
+	a:hover {
+		transform: translateY(-1px);
 		box-shadow: 0 2px 18px rgba(0, 0, 0, 0.03);
 	}
 
-	.quiz-card h2 {
-		margin-bottom: var(--spacing-2xs);
-		line-height: 1;
+	.cover {
+		padding-block: var(--spacing-s);
+	}
+	.quiz-card {
+		padding: var(--spacing-s);
+		display: grid;
+		gap: var(--spacing-2xs);
+		background-color: var(--color-cream-100);
 	}
 
 	.quiz-meta {
