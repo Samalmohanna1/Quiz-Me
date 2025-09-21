@@ -55,6 +55,17 @@
     --color-yellow-800: hsla(48, 57%, 40%, 1);
     --color-yellow-900: hsla(48, 56%, 32%, 1);
 
+    --color-red-50: hsla(0, 83%, 98%, 1);
+    --color-red-100: hsla(0, 89%, 93%, 1);
+    --color-red-200: hsla(0, 90%, 84%, 1);
+    --color-red-300: hsla(0, 89%, 74%, 1);
+    --color-red-400: hsla(0, 90%, 65%, 1);
+    --color-red-500: hsla(0, 89%, 55%, 1);
+    --color-red-600: hsla(0, 72%, 48%, 1);
+    --color-red-700: hsla(0, 73%, 41%, 1);
+    --color-red-800: hsla(0, 73%, 35%, 1);
+    --color-red-900: hsla(0, 72%, 28%, 1);
+
     /* Font Sizes */
     --text-step--2: clamp(0.72rem, 0.6609rem + 0.2954vw, 0.96rem);
     --text-step--1: clamp(0.9rem, 0.8262rem + 0.3692vw, 1.2rem);

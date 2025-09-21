@@ -1,4 +1,5 @@
 ---
+cover: 'assets/quiz-media/cover-imgs/placeholder-img.webp'
 title: 'Biology Basics'
 description: 'Test your knowledge of essential biology concepts'
 difficulty: 'challenging'

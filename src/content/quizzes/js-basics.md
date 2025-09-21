@@ -1,4 +1,5 @@
 ---
+cover: 'assets/quiz-media/cover-imgs/placeholder-img.webp'
 title: 'JavaScript Basics'
 description: 'Test your knowledge of fundamental JavaScript concepts'
 difficulty: 'advanced'

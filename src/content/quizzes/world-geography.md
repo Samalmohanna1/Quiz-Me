@@ -1,4 +1,5 @@
 ---
+cover: 'assets/quiz-media/cover-imgs/placeholder-img.webp'
 title: 'World Geography'
 description: 'Test your knowledge of countries, capitals, and landmarks'
 difficulty: 'challenging'
