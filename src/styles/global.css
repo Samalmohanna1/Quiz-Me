@@ -32,7 +32,7 @@ body {
 .heading {
     color: var(--color-black-600);
     font-weight: 700;
-    letter-spacing: var(--letter-spacing-xs);
+    letter-spacing: var(--letter-spacing-l);
     line-height: 1;
 }
 

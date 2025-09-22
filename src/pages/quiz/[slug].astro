@@ -39,7 +39,7 @@ const { Content } = await quiz.render()
 		<Quiz quiz={quiz.data} client:load />
 	</div>
 	<div class='center-text'>
-		<a href='/' aria-label='back to quiz list.' class='back-btn'
+		<a href='/#quizGrid' aria-label='back to quiz list.' class='back-btn'
 			>Find Another Quiz</a
 		>
 	</div>
@@ -80,13 +80,19 @@ const { Content } = await quiz.render()
 		margin-block: var(--spacing-l);
 		border-left: 8px solid var(--color-black-500);
 	}
+	.center-text {
+		margin-block: var(--spacing-l);
+	}
 	.back-btn {
 		display: inline-block;
-		padding-inline: var(--spacing-s);
-		padding-block: var(--spacing-2xs);
+		padding: var(--spacing-l) var(--spacing-3xl);
 		background-color: var(--color-black-500);
 		color: var(--color-yellow-400);
 		font-weight: 600;
+		text-decoration: none;
+	}
+	.back-btn:hover {
+		text-decoration: underline;
 		text-underline-position: under;
 	}
 </style>

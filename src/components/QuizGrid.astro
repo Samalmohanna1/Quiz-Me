@@ -5,7 +5,7 @@ import Icon from './Icon.astro'
 const quizzes = await getCollection('quizzes')
 ---
 
-<section class='content'>
+<section id='quizGrid' class='content'>
 	<div class='header'>
 		<span class='icon'>
 			<Icon name='arrow-2' scale={0.8} />
@@ -68,6 +68,7 @@ const quizzes = await getCollection('quizzes')
 		padding-block: var(--spacing-l);
 		font-family: ClimateCrisis;
 		font-size: var(--text-step-0);
+		letter-spacing: var(--letter-spacing-m);
 		color: var(--color-black-500);
 		background-color: var(--color-blue-300);
 	}
