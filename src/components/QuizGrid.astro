@@ -1,7 +1,6 @@
 ---
 import { getCollection } from 'astro:content'
 import Icon from './Icon.astro'
-import Separator from './Separator.astro'
 
 const quizzes = await getCollection('quizzes')
 ---
@@ -24,7 +23,7 @@ const quizzes = await getCollection('quizzes')
 						class='cover'
 						style={`background-image: url('${quiz.data.cover}'); background-size: cover;`}
 					>
-						<Icon name='heart-1' />
+						<Icon name='heart-1' scale={2} />
 					</div>
 					<div class='quiz-meta'>
 						<span class={`difficulty-` + quiz.data.difficulty}>
@@ -59,8 +58,6 @@ const quizzes = await getCollection('quizzes')
 		grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
 		gap: var(--spacing-m);
 		padding-block: var(--spacing-3xl);
-		padding-inline: var(--spacing-s);
-		background-color: var(--color-blue-100);
 	}
 	.header {
 		display: flex;

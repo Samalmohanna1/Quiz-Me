@@ -1,5 +1,5 @@
 ---
-cover: 'assets/quiz-media/cover-imgs/placeholder-img.webp'
+cover: '/assets/quiz-media/cover-imgs/placeholder-img.webp'
 title: 'Pop Culture Trivia'
 description: 'A fun quiz to test your knowledge of recent pop culture'
 difficulty: 'easy'
