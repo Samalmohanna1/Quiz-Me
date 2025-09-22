@@ -1,5 +1,5 @@
 ---
-cover: 'assets/quiz-media/cover-imgs/placeholder-img.webp'
+cover: '/assets/quiz-media/cover-imgs/placeholder-img.webp'
 title: 'Math Fundamentals'
 description: 'Check your understanding of basic math concepts'
 difficulty: 'easy'

@@ -5,41 +5,71 @@ import Icon from './Icon.astro'
 const quizzes = await getCollection('quizzes')
 ---
 
-<div class='content quiz-grid'>
-	{
-		quizzes.map((quiz) => (
-			<a class='quiz-card' href={`/quiz/${quiz.slug}`}>
-				<div
-					class='cover'
-					style={`background-image: url('${quiz.data.cover}'); background-size: cover;`}
-				>
-					<Icon name='heart-1' />
-					{/* <div class='quiz-meta'>
+<section class='content'>
+	<div class='header'>
+		<span class='icon'>
+			<Icon name='arrow-2' scale={0.8} />
+		</span>
+		<h2>pick a quiz below</h2>
+		<span class='icon'>
+			<Icon name='arrow-2' scale={0.8} />
+		</span>
+	</div>
+	<div class='quiz-grid'>
+		{
+			quizzes.map((quiz) => (
+				<a class='quiz-card' href={`/quiz/${quiz.slug}`}>
+					<div
+						class='cover'
+						style={`background-image: url('${quiz.data.cover}'); background-size: cover;`}
+					>
+						<Icon name='heart-1' scale={2} />
+					</div>
+					<div class='quiz-meta'>
 						<span class={`difficulty-` + quiz.data.difficulty}>
 							{quiz.data.difficulty}
 						</span>
 						<span class='category'>{quiz.data.category}</span>
-						<span class='question-count'>
-							{quiz.data.questions.length} questions
-						</span>
-					</div> */}
-				</div>
-				<h3>{quiz.data.title}</h3>
-				<p>{quiz.data.description}</p>
-			</a>
-		))
-	}
-</div>
+						{/* <span class='question-count'>
+						{quiz.data.questions.length} questions
+						</span> */}
+					</div>
+					<div>
+						<h3>{quiz.data.title}</h3>
+						<p>{quiz.data.description}</p>
+					</div>
+				</a>
+			))
+		}
+	</div>
+</section>
 
 <style>
+	.content {
+		margin-block: var(--spacing-3xl);
+	}
+	.icon {
+		background-color: var(--color-yellow-500);
+		display: block;
+		border-radius: 50%;
+	}
 	.quiz-grid {
 		display: grid;
-		grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+		grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
 		gap: var(--spacing-m);
 		padding-block: var(--spacing-3xl);
-		padding-inline: var(--spacing-s);
-		margin-block: var(--spacing-3xl);
-		background-color: var(--color-cream-200);
+	}
+	.header {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		gap: var(--spacing-xl);
+		padding-block: var(--spacing-l);
+		font-family: ClimateCrisis;
+		font-size: var(--text-step-0);
+		color: var(--color-black-500);
+		background-color: var(--color-blue-300);
 	}
 
 	a {
@@ -80,12 +110,26 @@ const quizzes = await getCollection('quizzes')
 	}
 
 	.quiz-meta .difficulty-easy {
-		background: var(--color-yellow-200);
+		background: rgb(138, 233, 138);
 	}
 	.quiz-meta .difficulty-challenging {
-		background: var(--color-orange-200);
+		background: var(--color-orange-300);
 	}
 	.quiz-meta .difficulty-advanced {
-		background: var(--color-blue-200);
+		background: var(--color-red-300);
+	}
+	@media (min-width: 500px) {
+		.header {
+			font-size: var(--text-step-1);
+		}
+	}
+
+	@media (min-width: 1000px) {
+		.header {
+			flex-direction: row;
+			align-items: center;
+			gap: var(--spacing-s);
+			font-size: var(--text-step-3);
+		}
 	}
 </style>
