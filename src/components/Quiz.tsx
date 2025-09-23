@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import '../styles/quiz.css'
+
 interface QuizQuestion {
 	question: string
 	options: string[]
@@ -40,7 +41,7 @@ export default function QuizPlayer({ quiz }: QuizPlayerProps) {
 		selectedAnswers[currentQuestionIndex] !== undefined
 
 	const handleAnswerSelect = (answerIndex: number) => {
-		console.log('Answer selected:', answerIndex) // Debug log
+		console.log('Answer selected:', answerIndex)
 		const isCorrect = answerIndex === currentQuestion.correctAnswer
 		const points = isCorrect ? currentQuestion.points : 0
 
@@ -53,7 +54,6 @@ export default function QuizPlayer({ quiz }: QuizPlayerProps) {
 			},
 		}))
 
-		// Show explanation if it exists
 		if (currentQuestion.explanation) {
 			setShowExplanation(true)
 		}
