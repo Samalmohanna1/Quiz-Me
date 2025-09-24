@@ -41,7 +41,6 @@ export default function QuizPlayer({ quiz }: QuizPlayerProps) {
 		selectedAnswers[currentQuestionIndex] !== undefined
 
 	const handleAnswerSelect = (answerIndex: number) => {
-		console.log('Answer selected:', answerIndex)
 		const isCorrect = answerIndex === currentQuestion.correctAnswer
 		const points = isCorrect ? currentQuestion.points : 0
 
@@ -91,22 +90,16 @@ export default function QuizPlayer({ quiz }: QuizPlayerProps) {
 		const results = calculateResults()
 
 		return (
-			<div className='quiz-results'>
-				<h2>Quiz Complete! 🎉</h2>
+			<div className='quiz-container'>
+				<h2 className='question-text'>Quiz Complete! 🎉</h2>
 				<div className='results-summary'>
-					<p>
-						<strong>Score:</strong> {results.totalScore} points
-					</p>
 					<p>
 						<strong>Correct Answers:</strong>{' '}
 						{results.correctAnswers} out of {results.totalQuestions}
 					</p>
-					<p>
-						<strong>Percentage:</strong> {results.percentage}%
-					</p>
 				</div>
 
-				<div className='results-breakdown'>
+				{/* <div className='results-breakdown'>
 					<h3>Review Your Answers:</h3>
 					{quiz.questions.map((question, index) => {
 						const userAnswer = selectedAnswers[index]
@@ -144,11 +137,11 @@ export default function QuizPlayer({ quiz }: QuizPlayerProps) {
 							</div>
 						)
 					})}
-				</div>
+				</div> */}
 
 				<button
 					onClick={() => window.location.reload()}
-					className='retake-button'
+					className='quiz-button'
 				>
 					Retake Quiz
 				</button>
@@ -160,10 +153,6 @@ export default function QuizPlayer({ quiz }: QuizPlayerProps) {
 		<div className='quiz-container'>
 			<div className='quiz-header'>
 				<div className='progress-bar'>
-					<div className='progress-text'>
-						Question {currentQuestionIndex + 1} of{' '}
-						{quiz.questions.length}
-					</div>
 					<div className='progress-visual'>
 						<div
 							className='progress-fill'
@@ -176,14 +165,14 @@ export default function QuizPlayer({ quiz }: QuizPlayerProps) {
 							}}
 						/>
 					</div>
+					<div className='progress-text'>
+						{currentQuestionIndex + 1} / {quiz.questions.length}
+					</div>
 				</div>
 			</div>
 
-			<div className='question-section'>
+			<div>
 				<h2 className='question-text'>{currentQuestion.question}</h2>
-				<p className='question-points'>
-					Points: {currentQuestion.points}
-				</p>
 
 				<div className='options-container'>
 					{currentQuestion.options.map((option, index) => {
@@ -236,7 +225,7 @@ export default function QuizPlayer({ quiz }: QuizPlayerProps) {
 
 				{hasSelectedAnswer && (
 					<div className='navigation'>
-						<button onClick={handleNext} className='next-button'>
+						<button onClick={handleNext} className='quiz-button'>
 							{isLastQuestion ? 'Finish Quiz' : 'Next Question'}
 						</button>
 					</div>

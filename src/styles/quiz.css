@@ -1,13 +1,10 @@
 .quiz-container {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: var(--spacing-l) var(--spacing-s);
-    border: 2px dashed red;
+    padding-top: var(--spacing-2xs);
 }
 
 .progress-visual {
-    height: 8px;
-    background-color: var(--color-cream-100);
+    height: var(--text-step--2);
+    background-color: var(--color-blue-100);
 }
 
 .progress-fill {
@@ -16,33 +13,72 @@
     transition: width 0.3s ease;
 }
 
+.progress-text {
+    font-size: var(--text-step--2);
+    text-align: right;
+    padding-block: var(--spacing-3xs);
+}
+
+.question-text {
+    font-size: var(--text-step-1);
+    font-weight: 500;
+    line-height: 1.2;
+    text-wrap: pretty;
+    margin-block: var(--spacing-m) var(--spacing-xs);
+}
+
 .option-button {
     display: block;
     width: 100%;
-    padding: 1rem;
-    margin: 0.5rem 0;
-    border: 2px solid #ddd;
-    background: white;
-    border-radius: 8px;
+    padding: var(--spacing-xs);
+    margin-block: var(--spacing-2xs);
+    border: 2px solid var(--color-black-200);
+    background: var(--color-cream-100);
     cursor: pointer;
     transition: all 0.2s;
 }
 
 .option-button:hover {
-    border-color: #007bff;
+    border-color: var(--color-blue-400);
 }
 
 .option-button.selected.correct {
-    background-color: #d4edda;
-    border-color: #28a745;
+    background-color: var(--color-blue-100);
+    border-color: var(--color-blue-400);
 }
 
 .option-button.selected.incorrect {
-    background-color: #f8d7da;
-    border-color: #dc3545;
+    background-color: var(--color-red-100);
+    border-color: var(--color-red-400);
 }
 
 .option-button.correct-answer {
-    background-color: #d4edda;
-    border-color: #28a745;
+    background-color: var(--color-blue-100);
+    border-color: var(--color-blue-400);
 }
+
+.quiz-button {
+    display: block;
+    width: 100%;
+    padding: var(--spacing-xs);
+    margin-block: var(--spacing-2xs);
+    border: 2px solid var(--color-black-500);
+    background: var(--color-black-500);
+    color: var(--color-cream-100);
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.quiz-button:hover {
+    text-decoration: underline;
+    text-underline-position: under;
+}
+
+.explanation-box {
+    padding: var(--spacing-s);
+    background-color: var(--color-yellow-300);
+    color: var(--color-black-500)
+}
+
+.results-summary {}

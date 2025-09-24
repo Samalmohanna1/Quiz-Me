@@ -21,23 +21,15 @@ const { Content } = await quiz.render()
 ---
 
 <BaseLayout title={quiz.data.title}>
-	<div class='quiz-description'>
-		<div class='quiz-header'>
-			<div class='quiz-info'>
-				<span class={`difficulty-` + quiz.data.difficulty}>
-					{quiz.data.difficulty}
-				</span>
-				<span class='category'>{quiz.data.category}</span>
-				<span class='question-count'>
-					{quiz.data.questions.length} questions
-				</span>
-			</div>
+	<section class='content'>
+		<div class='quiz-description'>
+			<Content />
 		</div>
-		<Content />
-	</div>
-	<div class=''>
-		<Quiz quiz={quiz.data} client:load />
-	</div>
+		<div class='quiz'>
+			<Quiz quiz={quiz.data} client:load />
+		</div>
+	</section>
+
 	<div class='center-text'>
 		<a href='/#quizGrid' aria-label='back to quiz list.' class='back-btn'
 			>Find Another Quiz</a
@@ -45,41 +37,31 @@ const { Content } = await quiz.render()
 	</div>
 </BaseLayout>
 
-<style>
-	.quiz-header {
-		margin-bottom: var(--spacing-2xs);
-	}
-
-	.quiz-info {
-		display: flex;
-		flex-wrap: wrap;
-		gap: var(--spacing-3xs);
-	}
-
-	.quiz-info span {
-		padding-inline: var(--spacing-2xs);
-		font-size: var(--text-step--2);
-		line-height: 1.5;
-		color: var(--color-black-400);
-		background: var(--color-yellow-200);
-	}
-
-	.quiz-info .difficulty-easy {
-		background: var(--color-yellow-200);
-	}
-	.quiz-info .difficulty-challenging {
-		background: var(--color-orange-200);
-	}
-	.quiz-info .difficulty-advanced {
-		background: var(--color-blue-200);
-	}
-
+<style is:global>
 	.quiz-description {
-		background: var(--color-cream-50);
-		padding: var(--spacing-m);
-		margin-block: var(--spacing-l);
-		border-left: 8px solid var(--color-black-500);
+		border-bottom: 1px solid var(--color-black-100);
 	}
+	.quiz-description h1 {
+		font-size: var(--text-step--1);
+		color: var(--color-black-400);
+		margin-bottom: var(--spacing-3xs);
+	}
+
+	.quiz-description p {
+		font-size: var(--text-step--2);
+		color: var(--color-black-400);
+		margin-bottom: var(--spacing-3xs);
+		text-wrap: balance;
+	}
+</style>
+<style>
+	.content {
+		max-width: 800px;
+		margin-block: var(--spacing-l);
+		padding: var(--spacing-m);
+		background: var(--color-cream-100);
+	}
+
 	.center-text {
 		margin-block: var(--spacing-l);
 	}
