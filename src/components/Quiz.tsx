@@ -226,7 +226,7 @@ export default function QuizPlayer({ quiz }: QuizPlayerProps) {
 				{hasSelectedAnswer && (
 					<div className='navigation'>
 						<button onClick={handleNext} className='quiz-button'>
-							{isLastQuestion ? 'Finish Quiz' : 'Next Question'}
+							{isLastQuestion ? 'Quiz Results' : 'Next Question'}
 						</button>
 					</div>
 				)}
