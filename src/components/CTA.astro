@@ -1,0 +1,35 @@
+<div class='content center-text'>
+	<a href='/quiz' aria-label='back to quiz list.' class='back-btn'
+		>Find Another Quiz</a
+	>
+</div>
+
+<style>
+	.center-text {
+		margin-block: var(--spacing-l);
+	}
+	.back-btn {
+		display: inline-block;
+		width: 100%;
+		padding: var(--spacing-xl);
+		background-color: var(--color-black-500);
+		color: var(--color-cream-300);
+		font-weight: 700;
+		font-size: var(--text-step-1);
+		text-decoration: none;
+		text-transform: uppercase;
+	}
+	.back-btn:hover {
+		text-decoration: underline;
+		text-underline-position: under;
+		color: var(--color-yellow-500);
+	}
+
+	@media (min-width: 1000px) {
+		.back-btn {
+			width: 80%;
+			padding: var(--spacing-3xl);
+			font-size: var(--text-step-3);
+		}
+	}
+</style>

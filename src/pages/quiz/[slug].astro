@@ -2,6 +2,7 @@
 import { getCollection, getEntry } from 'astro:content'
 import BaseLayout from '../../layouts/BaseLayout.astro'
 import Quiz from '../../components/Quiz'
+import CTA from '../../components/CTA.astro'
 
 export async function getStaticPaths() {
 	const quizzes = await getCollection('quizzes')
@@ -30,11 +31,7 @@ const { Content } = await quiz.render()
 		</div>
 	</section>
 
-	<div class='center-text'>
-		<a href='/#quizGrid' aria-label='back to quiz list.' class='back-btn'
-			>Find Another Quiz</a
-		>
-	</div>
+	<CTA />
 </BaseLayout>
 
 <style is:global>
@@ -60,21 +57,5 @@ const { Content } = await quiz.render()
 		margin-block: var(--spacing-l);
 		padding: var(--spacing-m);
 		background: var(--color-cream-100);
-	}
-
-	.center-text {
-		margin-block: var(--spacing-l);
-	}
-	.back-btn {
-		display: inline-block;
-		padding: var(--spacing-l) var(--spacing-3xl);
-		background-color: var(--color-black-500);
-		color: var(--color-yellow-400);
-		font-weight: 600;
-		text-decoration: none;
-	}
-	.back-btn:hover {
-		text-decoration: underline;
-		text-underline-position: under;
 	}
 </style>

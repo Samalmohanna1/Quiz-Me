@@ -14,8 +14,10 @@ import Icon from './Icon.astro'
 				Quizzes So Fun, You&apos;ll Forget You&apos;re Procrastinating
 			</h1>
 			<p>
-				Nerd out, show off, but don&apos;t blame us for missed
-				deadlines.
+				<mark>
+					Nerd out, show off, but don&apos;t blame us for missed
+					deadlines.
+				</mark>
 			</p>
 
 			<div class='icons-flex tight'>
@@ -38,6 +40,13 @@ import Icon from './Icon.astro'
 	section {
 		background-color: var(--color-cream-600);
 		padding-block: var(--spacing-xl);
+	}
+	mark {
+		display: inline-block;
+		padding-inline: var(--spacing-3xs);
+		transform: rotate(2deg);
+		background-color: var(--color-yellow-500);
+		color: var(--color-black-500);
 	}
 	.content-flex {
 		display: flex;
