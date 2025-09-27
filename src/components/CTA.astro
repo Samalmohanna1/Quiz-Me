@@ -1,21 +1,38 @@
+---
+import WrapperPatterns from './WrapperPatterns.astro'
+---
+
 <div class='content center-text'>
-	<a href='/quiz' aria-label='back to quiz list.' class='back-btn'
-		>Find Another Quiz</a
+	<WrapperPatterns
+		pattern='checkers'
+		fg='var(--color-black-400)'
+		bg='var(--color-black-600)'
+		gap={36}
+		scale={2}
 	>
+		<a href='/quiz' aria-label='back to quiz list.' class='back-btn'
+			>Find Another Quiz</a
+		>
+	</WrapperPatterns>
 </div>
 
 <style>
+	.content {
+		padding-block: calc(var(--spacing-3xl) * 1.5);
+		width: 90%;
+	}
 	.center-text {
 		margin-block: var(--spacing-l);
 	}
+
 	.back-btn {
 		display: inline-block;
 		width: 100%;
-		padding: var(--spacing-xl);
-		background-color: var(--color-black-500);
-		color: var(--color-cream-300);
-		font-weight: 700;
-		font-size: var(--text-step-1);
+		padding: calc(var(--spacing-3xl) * 1.5) var(--spacing-s);
+		color: var(--color-blue-300);
+		font-weight: 800;
+		font-size: var(--text-step-5);
+		line-height: 1.1;
 		text-decoration: none;
 		text-transform: uppercase;
 	}
@@ -26,10 +43,11 @@
 	}
 
 	@media (min-width: 1000px) {
-		.back-btn {
+		.content {
 			width: 80%;
-			padding: var(--spacing-3xl);
-			font-size: var(--text-step-3);
+		}
+		.back-btn {
+			font-size: var(--text-step-6);
 		}
 	}
 </style>
