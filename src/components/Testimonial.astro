@@ -1,27 +1,34 @@
 ---
 import { getCollection } from 'astro:content'
+import WrapperTextures from './WrapperTextures.astro'
+import Separator from './Separator.astro'
 
 const testimonials = await getCollection('testimonials')
 ---
 
 <section>
-	<div class='flex content'>
-		{
-			testimonials.map((t) => (
-				<div class='wrapper'>
-					<div class='paper'>
-						<p class='testimonial'>{t.data.testimonial}</p>
-						<p class='name'>{t.data.name}</p>
+	<WrapperTextures pattern='Dust' blend='multiply' opacity={0.8}>
+		<Separator direction='column-reverse' color='var(--color-red-400)' />
+		<div class='flex content'>
+			{
+				testimonials.map((t) => (
+					<div class='wrapper'>
+						<div class='paper'>
+							<p class='testimonial'>{t.data.testimonial}</p>
+							<p class='name'>{t.data.name}</p>
+						</div>
 					</div>
-				</div>
-			))
-		}
-	</div>
+				))
+			}
+		</div>
+		<Separator direction='column' color='var(--color-red-400)' />
+	</WrapperTextures>
 </section>
 
 <style>
 	section {
-		background-color: pink;
+		background-color: var(--color-red-300);
+		margin-block: var(--spacing-3xl);
 	}
 	.flex {
 		display: flex;
@@ -35,7 +42,7 @@ const testimonials = await getCollection('testimonials')
 	}
 	.paper {
 		max-width: 450px;
-		background-image: url('../assets/ripped-paper.webp');
+		background-image: url('assets/paper/ripped-paper.webp');
 		background-position: center;
 		background-size: cover;
 		background-repeat: no-repeat;
