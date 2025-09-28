@@ -1,35 +1,40 @@
 ---
 import baseData from '../data/baseData.js'
+import Separator from './Separator.astro'
+import WrapperTextures from './WrapperTextures.astro'
 const currentYear = new Date().getFullYear()
 ---
 
 <footer>
-	<div class='content'>
-		<p class='large-header'>{baseData.name}</p>
-		<nav class='footer-content'>
-			<a
-				href={baseData.miniGamesURL}
-				target='_blank'
-				rel='noopener noreferrer'
-				aria-label={baseData.miniGamesAriaLabel}
-				class='footer-link'
-				>MYOL minigames <span class='arrow'>&#8599;</span>
-			</a>
-			<a
-				href={baseData.portfolioURL}
-				target='_blank'
-				rel='noopener noreferrer'
-				aria-label={baseData.portfoliAriaLabel}
-				class='footer-link'
-				>Made with &#128151; by Sam Almohanna <span class='arrow'
-					>&#8599;</span
-				></a
-			>
-			<p class='copyright'>
-				Copyright &copy; {currentYear} - All rights reserved
-			</p>
-		</nav>
-	</div>
+	<WrapperTextures pattern='Grunge' blend='screen' opacity={0.5}>
+		<div class='content'>
+			<p class='large-header'>{baseData.name}</p>
+			<nav class='footer-content'>
+				<a
+					href={baseData.miniGamesURL}
+					target='_blank'
+					rel='noopener noreferrer'
+					aria-label={baseData.miniGamesAriaLabel}
+					class='footer-link'
+					>MYOL minigames <span class='arrow'>&#8599;</span>
+				</a>
+				<a
+					href={baseData.portfolioURL}
+					target='_blank'
+					rel='noopener noreferrer'
+					aria-label={baseData.portfoliAriaLabel}
+					class='footer-link'
+					>Made with &#128151; by Sam Almohanna <span class='arrow'
+						>&#8599;</span
+					></a
+				>
+				<p class='copyright'>
+					Copyright &copy; {currentYear} - All rights reserved
+				</p>
+			</nav>
+		</div>
+		<Separator direction='column' color='var(--color-yellow-600)' />
+	</WrapperTextures>
 </footer>
 
 <style>
@@ -49,10 +54,11 @@ const currentYear = new Date().getFullYear()
 		padding-block: var(--spacing-s);
 	}
 	.large-header {
-		font-size: clamp(32px, 18cqw, 295px);
+		font-size: clamp(32px, 16cqw, 270px);
 		font-family: ClimateCrisis, sans-serif;
 		text-decoration: underline;
 		text-align: center;
+		text-transform: uppercase;
 		line-height: 100%;
 		letter-spacing: var(--letter-spacing-s);
 		color: var(--color-black-500);
