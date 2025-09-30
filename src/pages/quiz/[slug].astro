@@ -1,7 +1,7 @@
 ---
 import { getCollection, getEntry } from 'astro:content'
 import BaseLayout from '../../layouts/BaseLayout.astro'
-import Quiz from '../../components/Quiz'
+import QuizPlayer from '../../components/QuizPlayer'
 import CTA from '../../components/CTA.astro'
 
 export async function getStaticPaths() {
@@ -26,18 +26,13 @@ const { Content } = await quiz.render()
 		<div class='quiz-description'>
 			<Content />
 		</div>
-		<div class='quiz'>
-			<Quiz quiz={quiz.data} client:load />
-		</div>
+		<QuizPlayer quiz={quiz.data} client:load />
 	</section>
 
 	<CTA />
 </BaseLayout>
 
 <style is:global>
-	.quiz-description {
-		border-bottom: 1px solid var(--color-black-100);
-	}
 	.quiz-description h1 {
 		font-size: var(--text-step--1);
 		color: var(--color-black-400);
@@ -52,10 +47,16 @@ const { Content } = await quiz.render()
 	}
 </style>
 <style>
+	body {
+		background-color: var(--color-cream-400);
+	}
 	.content {
-		max-width: 800px;
 		margin-block: var(--spacing-l);
-		padding: var(--spacing-m);
-		background: var(--color-cream-100);
+		padding: var(--spacing-xl) var(--spacing-s);
+	}
+	@media (min-width: 768px) {
+		.content {
+			padding-inline: var(--spacing-3xl);
+		}
 	}
 </style>

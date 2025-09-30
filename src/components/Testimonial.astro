@@ -4,6 +4,15 @@ import WrapperTextures from './WrapperTextures.astro'
 import Separator from './Separator.astro'
 
 const testimonials = await getCollection('testimonials')
+
+const paperStyle = `
+		max-width: 450px;
+		background-image: url('${import.meta.env.BASE_URL}assets/paper/ripped-paper.webp');
+		background-position: center;
+		background-size: cover;
+		background-repeat: no-repeat;
+		padding: var(--spacing-xl) var(--spacing-s);
+`
 ---
 
 <section>
@@ -13,7 +22,7 @@ const testimonials = await getCollection('testimonials')
 			{
 				testimonials.map((t) => (
 					<div class='wrapper'>
-						<div class='paper'>
+						<div style={paperStyle}>
 							<p class='testimonial'>{t.data.testimonial}</p>
 							<p class='name'>{t.data.name}</p>
 						</div>
@@ -39,14 +48,6 @@ const testimonials = await getCollection('testimonials')
 	}
 	.wrapper {
 		padding: var(--spacing-m) var(--spacing-s);
-	}
-	.paper {
-		max-width: 450px;
-		background-image: url('assets/paper/ripped-paper.webp');
-		background-position: center;
-		background-size: cover;
-		background-repeat: no-repeat;
-		padding: var(--spacing-xl) var(--spacing-s);
 	}
 	.testimonial {
 		font-size: var(--text-step--1);
