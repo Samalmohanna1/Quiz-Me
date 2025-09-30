@@ -1,4 +1,7 @@
 import { useState } from 'react'
+import { useRef } from 'react'
+import { animate } from 'motion'
+import { CardStackSVG } from './CardStackSVG'
 import '../styles/quiz.css'
 
 interface QuizQuestion {
@@ -39,6 +42,33 @@ export default function QuizPlayer({ quiz }: QuizPlayerProps) {
 	const isLastQuestion = currentQuestionIndex === quiz.questions.length - 1
 	const hasSelectedAnswer =
 		selectedAnswers[currentQuestionIndex] !== undefined
+	const backRef = useRef<SVGRectElement>(null)
+	const middleRef = useRef<SVGRectElement>(null)
+	const frontRef = useRef<SVGRectElement>(null)
+
+	const triggerAnimation = () => {
+		if (backRef.current) {
+			animate(
+				backRef.current,
+				{ rotate: ['-1deg', '1deg', '-1deg'] },
+				{ duration: 0.4 }
+			)
+		}
+		if (middleRef.current) {
+			animate(
+				middleRef.current,
+				{ rotate: ['1deg', '-1deg', '1deg'] },
+				{ duration: 0.4 }
+			)
+		}
+		if (frontRef.current) {
+			animate(
+				frontRef.current,
+				{ rotate: ['0deg', '1deg', '-1deg', '0deg'] },
+				{ duration: 0.6 }
+			)
+		}
+	}
 
 	const handleAnswerSelect = (answerIndex: number) => {
 		const isCorrect = answerIndex === currentQuestion.correctAnswer
@@ -59,6 +89,7 @@ export default function QuizPlayer({ quiz }: QuizPlayerProps) {
 	}
 
 	const handleNext = () => {
+		triggerAnimation()
 		if (isLastQuestion) {
 			setShowResults(true)
 		} else {
@@ -151,85 +182,95 @@ export default function QuizPlayer({ quiz }: QuizPlayerProps) {
 
 	return (
 		<div className='quiz-container'>
-			<div className='quiz-header'>
-				<div className='progress-bar'>
-					<div className='progress-visual'>
-						<div
-							className='progress-fill'
-							style={{
-								width: `${
-									((currentQuestionIndex + 1) /
-										quiz.questions.length) *
-									100
-								}%`,
-							}}
-						/>
-					</div>
-					<div className='progress-text'>
-						{currentQuestionIndex + 1} / {quiz.questions.length}
-					</div>
-				</div>
+			<div className='progress-visual'>
+				<div
+					className='progress-fill'
+					style={{
+						width: `${
+							((currentQuestionIndex + 1) /
+								quiz.questions.length) *
+							100
+						}%`,
+					}}
+				/>
 			</div>
+			<div className='progress-text'>
+				{currentQuestionIndex + 1} / {quiz.questions.length}
+			</div>
+			<div className='quiz-card'>
+				<div className='card-content'>
+					<h2 className='question-text'>
+						{currentQuestion.question}
+					</h2>
 
-			<div>
-				<h2 className='question-text'>{currentQuestion.question}</h2>
+					<div className='options-container'>
+						{currentQuestion.options.map((option, index) => {
+							const isSelected =
+								selectedAnswers[currentQuestionIndex]
+									?.answerIndex === index
+							const isCorrect =
+								index === currentQuestion.correctAnswer
+							const showFeedback =
+								hasSelectedAnswer && showExplanation
 
-				<div className='options-container'>
-					{currentQuestion.options.map((option, index) => {
-						const isSelected =
-							selectedAnswers[currentQuestionIndex]
-								?.answerIndex === index
-						const isCorrect =
-							index === currentQuestion.correctAnswer
-						const showFeedback =
-							hasSelectedAnswer && showExplanation
-
-						let buttonClass = 'option-button'
-						if (isSelected) {
-							buttonClass += ' selected'
-							if (showFeedback) {
-								buttonClass += isCorrect
-									? ' correct'
-									: ' incorrect'
+							let buttonClass = 'option-button'
+							if (isSelected) {
+								buttonClass += ' selected'
+								if (showFeedback) {
+									buttonClass += isCorrect
+										? ' correct'
+										: ' incorrect'
+								}
+							} else if (showFeedback && isCorrect) {
+								buttonClass += ' correct-answer'
 							}
-						} else if (showFeedback && isCorrect) {
-							buttonClass += ' correct-answer'
-						}
 
-						return (
+							return (
+								<button
+									key={index}
+									className={buttonClass}
+									onClick={() => handleAnswerSelect(index)}
+									disabled={hasSelectedAnswer}
+								>
+									{option}
+									{showFeedback &&
+										isSelected &&
+										(isCorrect ? ' ✓' : ' ✗')}
+									{showFeedback &&
+										!isSelected &&
+										isCorrect &&
+										' ← Correct'}
+								</button>
+							)
+						})}
+					</div>
+
+					{showExplanation && currentQuestion.explanation && (
+						<div className='explanation-box'>
+							<h4>Explanation:</h4>
+							<p>{currentQuestion.explanation}</p>
+						</div>
+					)}
+
+					{hasSelectedAnswer && (
+						<div className='navigation'>
 							<button
-								key={index}
-								className={buttonClass}
-								onClick={() => handleAnswerSelect(index)}
-								disabled={hasSelectedAnswer}
+								onClick={handleNext}
+								className='quiz-button'
 							>
-								{option}
-								{showFeedback &&
-									isSelected &&
-									(isCorrect ? ' ✓' : ' ✗')}
-								{showFeedback &&
-									!isSelected &&
-									isCorrect &&
-									' ← Correct'}
+								{isLastQuestion
+									? 'Quiz Results'
+									: 'Next Question'}
 							</button>
-						)
-					})}
+						</div>
+					)}
 				</div>
 
-				{showExplanation && currentQuestion.explanation && (
-					<div className='explanation-box'>
-						<h4>Explanation:</h4>
-						<p>{currentQuestion.explanation}</p>
-					</div>
-				)}
-
-				{hasSelectedAnswer && (
-					<div className='navigation'>
-						<button onClick={handleNext} className='quiz-button'>
-							{isLastQuestion ? 'Quiz Results' : 'Next Question'}
-						</button>
-					</div>
-				)}
+				<CardStackSVG
+					backRef={backRef}
+					middleRef={middleRef}
+					frontRef={frontRef}
+				/>
 			</div>
 		</div>
 	)
